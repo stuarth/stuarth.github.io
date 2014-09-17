@@ -5,21 +5,25 @@ date:   2014-09-14 8:56:00
 categories: clojure
 ---
 
+
+
+note that this behavior applies to core.async `0.1.338.0-5c5012-alpha`
+
 ## The issue distilled
 
-We'll create two timeout channels, close one, and read from the other. 
+Let's measure the time it takes to create two timeout chans, close one, and read from the other.
 
 {% highlight clojure %}
 (let [a (timeout 100)
       b (timeout 100)
       t0 (System/currentTimeMillis)]
-  (close! a)  
-  (<!! b)    
+  (close! a)
+  (<!! b)
   (- (System/currentTimeMillis) t0))
-  ;; how much time elapsed?
+;; => 0
 {% endhighlight %}
 
-I expected this would yield ~100ms. However, evaluating the expression instead shows that almost no time has elapsed
+What happened? Why don't we see a value ~100ms corresponding to `b`'s timeout?
 
 ## What's going on?
 
