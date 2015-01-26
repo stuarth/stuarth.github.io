@@ -2,7 +2,7 @@
 
 title:            Stuart Hinson
 locale:           en_US
-url:              http://stuarth.github.io
+url:              http://localhost:4000
 
 
 # Jekyll configuration
@@ -31,7 +31,7 @@ owner:
   bio: "Clojure programmer"
   email: 
   disqus-shortname: 
-  twitter: #username
+  twitter: lambdastu
   facebook: #username
   google:
     plus: #username
