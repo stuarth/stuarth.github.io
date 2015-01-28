@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Configuring CSRF protection in a simple Pedestal App"
+excerpt: "How to configure CSRF protection in a Pedestal App"
 date:   2015-01-25 10:30
 categories: clojure
 ---
