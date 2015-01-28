@@ -6,9 +6,9 @@ date:   2015-01-25 10:30
 categories: clojure
 ---
 
-OWASP has an [excellent description](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29) of CSRF attacks and why they're a concern. The tl;dr is that an attacker can utilize users' existing sessions to cause them to perform unwanted actions unless precautions are taken.
+OWASP has an [excellent description](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29) of CSRF attacks and why they're a concern. _The tl;dr is, without safegaurds, an attacker can cause users to take unintended actions on your app_. It's well worth spending a few minutes on the link above if you're not familiar.
 
-### Using `io.pedestal.http.csrf`
+### Using `io.pedestal.http.csrf` to prevent attacks
 
 Pedestal's `io.pedestal.http.csrf` namespace implements the [synchronizer token pattern](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#General_Recommendation:_Synchronizer_Token_Pattern) that gives us the tools we need.
 
@@ -62,3 +62,5 @@ All that's left is to include the request's anti-forgery token in our forms, som
 (format "<input type=\"hidden\" name=\"__anti-forgery-token\" value=\"%s\"/>"
   (::csrf/anti-forgery-token request))
 {% endhighlight %}
+
+A full sample's available [on Github](https://github.com/stuarth/pedestal-csrf).
