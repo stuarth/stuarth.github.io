@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Error handling in Pedestal 0.4.0"
+excerpt: "Error handling in Pedestal apps with io.pedestal.interceptor.error/error-dispatch"
 date:   2015-02-13 9:30
 categories: clojure
 ---
