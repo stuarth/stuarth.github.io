@@ -1,7 +1,7 @@
 ---
 layout: home
-excerpt: "A responsive Jekyll theme with editorial tendencies by designer Michael Rose."
-tags: [Jekyll, theme, responsive, blog, template]
+excerpt: "Programming, mostly in Clojure"
+tags: [clojure, pedestal]
 image:
   feature: texture-feature-01.jpg
   credit: Texture Lovers
