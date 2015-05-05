@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Pixie Pi"
+excerpt: "Notes on installing Pixie on a Raspberry Pi"
+date:   2015-05-05 12:36:00
+categories: pixie
+---
+
+[Pixie](https://github.com/pixie-lang/pixie) is a Clojure-inspired lisp that has a quick startup time and [nice FFI support](https://github.com/pixie-lang/pixie/wiki/FFI-(interop-with-C)) that allows it to make use of existing C libraries, making it a nice option for working with the Raspberry Pi.
+
+## Installing Pixie
+
+#### Meeting Dependencies
+
+From a base Raspbian install, [Pixie's dependencies](https://github.com/pixie-lang/pixie#dependencies) (as of eb5886ff95) except for `libuv-dev` can be satisfied using `aptitude`
+
+`sudo apt-get install libffi-dev libedit-dev libboost-all-dev`
+
+`libuv-dev` (and `libuv`) are available from the [Jesse packages](https://packages.debian.org/jessie/libuv0.10-dev).
+
+#### Building the Pixie VM
+
+`make build_no_jit`
+
+It'll run for about an hour. Enjoy the excellent ascii art the RPython build process produces.
+
+Cross compilation from a faster machine may be an option as well.
+
+## Interfacing with the Pi's GPIO
+
+Using Pixie's FFI, I made a [library called wiringPixie](https://github.com/stuarth/wiringPixie) wrapping [wiringPi](http://wiringpi.com). Follow the instructions on the README to install
+
+[https://github.com/stuarth/wiringPixie](https://github.com/stuarth/wiringPixie)
+
+and start hacking (or controlling LEDs :))
+
+{% highlight clojure %}
+(require wiring-pixie.gpio :refer :all)
+
+(def pin 7)
+
+(wiringPiSetup)         ;; required first!
+(pinMode pin OUTPUT)    ;; pin to OUTPUT
+(digitalWrite pin HIGH) ;; set pin 7 to HIGH
+{% endhighlight %}
