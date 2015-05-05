@@ -16,8 +16,16 @@ From a base Raspbian install, [Pixie's dependencies](https://github.com/pixie-la
 
 `sudo apt-get install libffi-dev libedit-dev libboost-all-dev`
 
-`libuv-dev` (and `libuv`) are available from the [Jesse packages](https://packages.debian.org/jessie/libuv0.10-dev).
+`libuv-dev` (and `libuv`) are available from the [Jesse packages](https://packages.debian.org/jessie/libuv0.10-dev). Use the armhf builds.
 
+  * [libuv](https://packages.debian.org/jessie/armhf/libuv0.10/download)
+  * [libuv-dev](https://packages.debian.org/jessie/armhf/libuv0.10-dev/download)
+
+Use `wget` to grab the packages and install with
+
+{% highlight sh %}
+sudo dpkg -i libuv*armhf.deb
+{% endhighlight %}
 #### Building the Pixie VM
 
 `make build_no_jit`
