@@ -74,23 +74,27 @@ Knowing that the other interceptors involved in processing a request are visible
 (require '[io.pedestal.interceptor.helpers :refer [around]])
 
 (defn browser-repl
+  "produces an interceptor that scans the context's queue on enter for
+  brower-repl metadata, calls inject-repl on leave if found"
   [inject-repl]
   (around
    ::browser-repl
    (fn [context] ;; fn to call on :enter
      (cond-> context
-       (some->> context
+       (some->> context ;; scan the queue for :browser-repl metadata
                 :io.pedestal.impl.interceptor/queue
                 (map meta)
                 (some :browser-repl))
-       (assoc :browser-repl true)))
+       (assoc :include-browser-repl true))) ;; add a flag to inject the repl
    (fn [{response :response :as context}] ;; on :leave
      (cond-> context
-       (:browser-repl context)
+       (:include-browser-repl context) ;; did we find browser-repl metadata?
        (update :response inject-repl))))) ;; add a repl!
 {% endhighlight %}
 
-where `inject-repl` is a function that handles the mechanics of modifying the response, along the lines of
+We use `around` to implement `browser-repl` so that we can examine the interceptor queue in the `before` stage and set a flag in the `context` called `:include-browser-repl` that we'll read when a response is present in the `leave` phase and decide whether to call `inject-repl`.
+
+`inject-repl` is a function that handles the mechanics of modifying the response, along the lines of
 
 {% highlight clojure %}
 (defn inject-repl
@@ -108,6 +112,8 @@ where `inject-repl` is a function that handles the mechanics of modifying the re
          (apply str)
          (response))))
 {% endhighlight %}
+
+We use `around` in the `browser-repl` fn above so that we can
 
 _Note_ [Brian Rowe and Alex Redington suggested](https://groups.google.com/d/msg/pedestal-users/Peoc1LheR8I/xFXalhQFJRcJ) a couple of very nice extensions to this idea that I'd recommend studying before implementing it.
 
