@@ -68,7 +68,7 @@ Interceptors serve a similar role as middlewares in Ring but the implementation 
 
 Pedestal represents interceptors sequentially, adding them as a queue to the request / response `context` (under `:io.pedestal.impl.interceptor/queue`). In broad strokes, requests are processed by taking an interceptor from the queue and applying its `:enter` function to the `context`, producing a new `context` that the next interceptor in the queue will act on. As each interceptor is visited, it's added to a stack in the `context` that will be traversed on the `:leave` stage. [The code](https://github.com/pedestal/pedestal/blob/73b5854d4ba01a6cd2146ca8a37ae6a2b76e8995/service/src/io/pedestal/impl/interceptor.clj#L121-L146) is well worth a read.
 
-Knowing that the other interceptors involved in processing a request are visible in the context's `:io.pedestal.impl.interceptor/queue`, we can write an interceptor that scans the queue looking for the `:browser-repl` metadata
+Knowing that the other interceptors involved in processing a request are visible in the context's `:io.pedestal.impl.interceptor/queue`, we can write an interceptor that scans the queue looking for the `:browser-repl` metadata and injects a repl into the response if it's found
 
 {% highlight clojure %}
 (require '[io.pedestal.interceptor.helpers :refer [around]])
