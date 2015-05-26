@@ -68,7 +68,7 @@ Interceptors serve a similar role as middlewares in Ring but the implementation 
 
 Pedestal represents interceptors sequentially, adding them as a queue to the request / response `context` (under `:io.pedestal.impl.interceptor/queue`). In broad strokes, requests are processed by taking an interceptor from the queue and applying its `:enter` function to the `context`, producing a new `context` that the next interceptor in the queue will act on. As each interceptor is visited, it's added to a stack in the `context` that will be traversed on the `:leave` stage. [The code](https://github.com/pedestal/pedestal/blob/73b5854d4ba01a6cd2146ca8a37ae6a2b76e8995/service/src/io/pedestal/impl/interceptor.clj#L121-L146) is well worth a read.
 
-Knowing that the other interceptors involved in processing a request are visible in the context's `:io.pedestal.impl.interceptor/queue`, we can write an interceptor that scans them looking for the `:browser-repl` metadata
+Knowing that the other interceptors involved in processing a request are visible in the context's `:io.pedestal.impl.interceptor/queue`, we can write an interceptor that scans the queue looking for the `:browser-repl` metadata
 
 {% highlight clojure %}
 (require '[io.pedestal.interceptor.helpers :refer [around]])
@@ -113,12 +113,10 @@ We use `around` to implement `browser-repl` so that we can examine the intercept
          (response))))
 {% endhighlight %}
 
-We use `around` in the `browser-repl` fn above so that we can
-
 _Note_ [Brian Rowe and Alex Redington suggested](https://groups.google.com/d/msg/pedestal-users/Peoc1LheR8I/xFXalhQFJRcJ) a couple of very nice extensions to this idea that I'd recommend studying before implementing it.
 
 Kinda cool, right? Interceptors are data, and neat approaches fall out. We use a similar pattern for authorization.
 
 Speaking of we -- RentPath is hiring! Tweet me if remote Clojure work sounds fun!
 
-Also, big thanks to __Brian Rowe__ for a number of improvements to this post!
+Also, big thanks to __Brian Rowe__ and __Rick Hall__ for a number of improvements to this post!
