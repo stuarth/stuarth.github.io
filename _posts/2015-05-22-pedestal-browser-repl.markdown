@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Understanding Pedestal Interceptors and Selectively Injecting a Browser REPL"
+title:  "Understanding Pedestal Interceptors and Selectively Injecting a ClojureScript REPL"
 excerpt: "Pedestal interceptors are data, and can be inspected as a request is processed. This can be used to conditionally inject a cljs REPL into a response"
 date:   2015-05-22 10:36:00
 categories: clojure
+tags: clojure clojurescript pedestal
 ---
 
 Pedestal represents interceptors, its analog to Ring middleware, as data. Let's look at how we can use that to conditionally inject a ClojureScript REPL into responses.

@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Error handling in Pedestal 0.4.0"
-excerpt: "Error handling in Pedestal apps with io.pedestal.interceptor.error/error-dispatch"
+excerpt: "Error handling in Clojure / Pedestal apps with io.pedestal.interceptor.error/error-dispatch"
 date:   2015-02-13 9:30
 categories: clojure
+tags: clojure pedestal
 ---
 
 Pedestal 0.4.0 includes [`io.pedestal.interceptor.error/error-dispatch`](https://github.com/pedestal/pedestal/blob/88b940ca9c4b68de18f452f0e168400872f3c10e/service/src/io/pedestal/interceptor/error.clj#L5), which uses `core.match` to make error handling very tidy. For example

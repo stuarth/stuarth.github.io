@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Configuring CSRF protection in a simple Pedestal App"
-excerpt: "How to configure CSRF protection in a Pedestal App"
+title:  "Configuring CSRF protection in a simple Clojure / Pedestal App"
+excerpt: "Learn to configure CSRF protection in a Clojure / Pedestal App"
 date:   2015-01-25 10:30
 categories: clojure
+tags: clojure pedestal csrf
 ---
 
 OWASP has an [excellent description](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29) of CSRF attacks and why they're a concern. _The tl;dr is, without safegaurds, an attacker can cause users to take unintended actions on your app_. It's well worth spending a few minutes on the link above if you're not familiar.
@@ -33,7 +34,7 @@ And add Pedestal's CSRF namespace to our service
 The trick to using `csrf/anti-forgery` with a form parameter (as of 0.3.1) is to realize that the `io.pedestal.http.body-params/body-params` interceptor, which is responsible for parsing parameters encoded in the request body, is *not* included by `io.pedestal.http/default-interceptors`. That means naively enabling CSRF protection in your service map, e.g.
 
 {% highlight clojure %}
-(def service {... 
+(def service {...
               ::bootstrap/enable-csrf {} ;; doesn't work with form params!
               ...})
 {% endhighlight %}
@@ -41,7 +42,7 @@ The trick to using `csrf/anti-forgery` with a form parameter (as of 0.3.1) is to
 won't work because the anti-forgery interceptor will attempt to read from `form-params` that haven't been parsed by `body-params` yet. Resolving it is simple, we'll update our `service` definition to include
 {% highlight clojure %}
 (def service {...
-              ::bootstrap/enable-session {} 
+              ::bootstrap/enable-session {}
               ...})
 {% endhighlight %}
 

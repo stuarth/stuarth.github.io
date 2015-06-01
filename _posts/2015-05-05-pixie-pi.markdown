@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Pixie Pi"
-excerpt: "Notes on installing Pixie on a Raspberry Pi"
+excerpt: "Installing Pixie, a Clojure-inspired Lisp, on the Raspberry Pi"
 date:   2015-05-05 12:36:00
 categories: pixie
+tags: pixie clojure
 ---
 
 [Pixie](https://github.com/pixie-lang/pixie) is a Clojure-inspired lisp that has a quick startup time and [nice FFI support](https://github.com/pixie-lang/pixie/wiki/FFI-(interop-with-C)) that allows it to make use of existing C libraries, making it a nice option for working with the Raspberry Pi.
@@ -34,7 +35,7 @@ It'll run for about an hour. Enjoy the excellent ascii art the RPython build pro
 
 Cross compilation from a faster machine may be an option as well.
 
-## Interfacing with the Pi's GPIO
+## Interfacing with the Raspberry Pi's GPIO
 
 Using Pixie's FFI, I made a [library called wiringPixie](https://github.com/stuarth/wiringPixie) wrapping [wiringPi](http://wiringpi.com). Follow the instructions on the README to install
 

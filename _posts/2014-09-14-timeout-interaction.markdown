@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Surprising timeout chan interactions in core.async"
-excerpt: "core.async timeout chans within a small resolution share underlying channels, leading to occasional surprises"
+title:  "Surprising timeout chan interactions in Clojure's core.async"
+excerpt: "Clojure core.async timeout chans within a small resolution share underlying channels, leading to occasional surprises"
 date:   2014-09-14 8:56:00
 categories: clojure
+tags: clojure
 ---
 
 
@@ -62,6 +63,4 @@ So, if we found an `me`, and its key is within the tolerance of `TIMEOUT_RESOLUT
 
 ### Thanks!
 
-A huge thanks to [Brian Rowe](https://github.com/briprowe) 
-
-
+A huge thanks to [Brian Rowe](https://github.com/briprowe)
