@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Understanding Pedestal Interceptors and Selectively Injecting a Browser REPL"
-excerpt: ""
+excerpt: "Pedestal interceptors are data, and can be inspected as a request is processed. This can be used to conditionally inject a cljs REPL into a response"
 date:   2015-05-22 10:36:00
 categories: clojure
 ---
