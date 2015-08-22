@@ -118,6 +118,4 @@ _Note_ [Brian Rowe and Alex Redington suggested](https://groups.google.com/d/msg
 
 Kinda cool, right? Interceptors are data, and neat approaches fall out. We use a similar pattern for authorization.
 
-Speaking of we -- RentPath is hiring! Tweet me if remote Clojure work sounds fun!
-
 Also, big thanks to __Brian Rowe__ and __Rick Hall__ for a number of improvements to this post!
