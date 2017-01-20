@@ -27,10 +27,10 @@ kramdown:
 # Site owner
 owner:
   name: Stuart Hinson
-  avatar: stu.jpg
-  bio: "Clojure programmer"
-  email: 
-  disqus-shortname: 
+  avatar: stu-kitten.png
+  bio: "Clojure & Rust programmer"
+  email:
+  disqus-shortname:
   twitter: lambdastu
   facebook: #username
   google:
