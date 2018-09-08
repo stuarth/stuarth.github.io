@@ -13,7 +13,8 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
-gems:
+plugins:
+  - jekyll-gist
   - jekyll-sitemap
 
 kramdown:
@@ -21,17 +22,17 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  use_coderay: false
+  enable_coderay: false
 
 
 # Site owner
 owner:
   name: Stuart Hinson
   avatar: stu-kitten.png
-  bio: "Clojure & Rust programmer"
+  bio: "Rust & Clojure programmer"
   email:
   disqus-shortname:
-  twitter: lambdastu
+  twitter: 
   facebook: #username
   google:
     plus: #username
@@ -42,7 +43,7 @@ owner:
   bing-verify: 
   github: stuarth
   stackoverflow: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
+  linkedin: stuarthinson
   instagram: #username
   lastfm: #username
   tumblr: #username
