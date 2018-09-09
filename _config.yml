@@ -29,8 +29,8 @@ kramdown:
 owner:
   name: Stuart Hinson
   avatar: stu-kitten.png
-  bio: "Rust & Clojure programmer. Open for freelancing."
-  email:
+  bio: "Rust & Clojure programmer. Open for freelancing. <br /><br />stuarthinson&lt;at&gt;gmail"
+  email: 
   disqus-shortname:
   twitter: 
   facebook: #username
