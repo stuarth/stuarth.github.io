@@ -2,7 +2,7 @@
 layout: post
 title:  "Rocket v0.5 Error Handling Best Practices"
 excerpt: ""
-date:   2020-07-28 12:36:00
+date: 2021-07-28 12:36:00
 categories: 
 tags: rust rocket
 ---
